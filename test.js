@@ -46,4 +46,30 @@ assert.equal(sortedTree.root.data, 4);
 
 console.log("Test 4 passed: Sorted array");
 
+console.log("\nTesting includes()");
+
+const includesTree = new Tree();
+includesTree.buildTree([10, 5, 15, 3, 7, 12, 18]);
+
+// Existing values
+assert.equal(includesTree.includes(10), true);
+assert.equal(includesTree.includes(3), true);
+assert.equal(includesTree.includes(18), true);
+assert.equal(includesTree.includes(7), true);
+
+// Non-existing values
+assert.equal(includesTree.includes(99), false);
+assert.equal(includesTree.includes(6), false);
+
+// Empty tree
+const emptyIncludesTree = new Tree();
+assert.equal(emptyIncludesTree.includes(10), false);
+
+// Invalid inputs
+assert.equal(includesTree.includes("10"), false);
+assert.equal(includesTree.includes(NaN), false);
+assert.equal(includesTree.includes(undefined), false);
+
+console.log("All includes() tests passed!");
+
 console.log("\nAll tests passed!");
