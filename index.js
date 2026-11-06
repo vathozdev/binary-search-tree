@@ -88,6 +88,32 @@ class Tree {
       parent.left = newNode;
     }
   }
+
+  deleteItem(value) {
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return;
+  }
+
+  let current = this.root;
+
+  if (current === null) {
+    return;
+  }
+
+  let parent = current;
+
+  while (current !== null) {
+    if (current.data > value) {
+      parent = current;
+      current = current.left;
+    } else if (current.data < value) {
+      parent = current;
+      current = current.right;
+    } else if (current.data === value) {
+
+    }
+  }
+}
 }
 
 export { Tree, Node };
