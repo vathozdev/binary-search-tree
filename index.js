@@ -54,6 +54,40 @@ class Tree {
 
     return false;
   }
+
+  insert(value) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      return;
+    }
+
+    let current = this.root;
+    const newNode = new Node(value);
+
+    if (current === null) {
+      this.root = newNode;
+      return;
+    }
+
+    let parent = current;
+
+    while (current !== null) {
+      if (current.data > value) {
+        parent = current;
+        current = current.left;
+      } else if (current.data < value) {
+        parent = current;
+        current = current.right;
+      } else if (current.data === value) {
+        return;
+      }
+    }
+
+    if (value > parent.data) {
+      parent.right = newNode;
+    } else {
+      parent.left = newNode;
+    }
+  }
 }
 
 export { Tree, Node };
