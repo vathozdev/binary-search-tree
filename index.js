@@ -34,6 +34,26 @@ class Tree {
 
     return root;
   }
+
+  includes(value) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      return false;
+    }
+
+    let current = this.root;
+
+    while (current !== null) {
+      if (current.data > value) {
+        current = current.left;
+      } else if (current.data < value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 export { Tree, Node };
