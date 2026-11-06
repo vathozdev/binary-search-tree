@@ -35,3 +35,5 @@ class Tree {
     return root;
   }
 }
+
+export { Tree, Node };
