@@ -170,6 +170,24 @@ class Tree {
 
     traverse(this.root);
   }
+
+  postOrderForEach(cb) {
+    if (typeof cb !== "function") {
+      throw new Error("A function is required.");
+    }
+
+    function traverse(node) {
+      if (node === null) {
+        return;
+      }
+
+      traverse(node.left);
+      traverse(node.right);
+      cb(node.data);
+    }
+
+    traverse(this.root);
+  }
 }
 
 export { Tree, Node };
