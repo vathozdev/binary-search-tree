@@ -152,6 +152,24 @@ class Tree {
 
     traverse(this.root);
   }
+
+  preOrderForEach(cb) {
+    if (typeof cb !== "function") {
+      throw new Error("A function is required.");
+    }
+
+    function traverse(node) {
+      if (node === null) {
+        return;
+      }
+
+      cb(node.data);
+      traverse(node.left);
+      traverse(node.right);
+    }
+
+    traverse(this.root);
+  }
 }
 
 export { Tree, Node };
