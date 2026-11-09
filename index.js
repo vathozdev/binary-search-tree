@@ -90,30 +90,50 @@ class Tree {
   }
 
   deleteItem(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return;
-  }
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      return;
+    }
 
-  let current = this.root;
+    let current = this.root;
 
-  if (current === null) {
-    return;
-  }
+    if (current === null) {
+      return;
+    }
 
-  let parent = current;
+    let parent = current;
 
-  while (current !== null) {
-    if (current.data > value) {
-      parent = current;
-      current = current.left;
-    } else if (current.data < value) {
-      parent = current;
-      current = current.right;
-    } else if (current.data === value) {
-
+    while (current !== null) {
+      if (current.data > value) {
+        parent = current;
+        current = current.left;
+      } else if (current.data < value) {
+        parent = current;
+        current = current.right;
+      } else if (current.data === value) {
+      }
     }
   }
-}
+
+  levelOrderForEach(cb) {
+    if (typeof cb !== "function") {
+      throw new Error(`A function is required.`);
+    }
+    if (this.root === null) {
+      return;
+    }
+    const arr = [];
+    arr.push(this.root);
+    while (arr.length > 0) {
+      let current = arr.shift();
+      cb(current.data);
+      if (current.left !== null) {
+        arr.push(current.left);
+      }
+      if (current.right !== null) {
+        arr.push(current.right);
+      }
+    }
+  }
 }
 
 export { Tree, Node };
