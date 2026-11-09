@@ -134,6 +134,24 @@ class Tree {
       }
     }
   }
+
+  inOrderForEach(cb) {
+    if (typeof cb !== "function") {
+      throw new Error("A function is required.");
+    }
+
+    function traverse(node) {
+      if (node === null) {
+        return;
+      }
+
+      traverse(node.left);
+      cb(node.data);
+      traverse(node.right);
+    }
+
+    traverse(this.root);
+  }
 }
 
 export { Tree, Node };
