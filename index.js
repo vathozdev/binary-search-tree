@@ -188,6 +188,34 @@ class Tree {
 
     traverse(this.root);
   }
+
+  height(value) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      return;
+    }
+
+    function measure(current) {
+      if (current === null) {
+        return -1;
+      }
+
+      return 1 + Math.max(measure(current.left), measure(current.right));
+    }
+
+    let current = this.root;
+
+    while (current !== null) {
+      if (current.data > value) {
+        current = current.left;
+      } else if (current.data < value) {
+        current = current.right;
+      } else {
+        return measure(current);
+      }
+    }
+
+    return;
+  }
 }
 
 export { Tree, Node };
