@@ -189,4 +189,36 @@ assert.deepEqual(postOrder, [3, 7, 5, 12, 18, 15, 10]);
 
 console.log("All traversal tests passed!");
 
+console.log("\nTesting height()");
+
+const heightTree = new Tree();
+heightTree.buildTree([10, 5, 15, 3, 7, 12, 18]);
+
+// Root
+assert.equal(heightTree.height(10), 2);
+
+// Internal nodes
+assert.equal(heightTree.height(5), 1);
+assert.equal(heightTree.height(15), 1);
+
+// Leaf nodes
+assert.equal(heightTree.height(3), 0);
+assert.equal(heightTree.height(7), 0);
+assert.equal(heightTree.height(12), 0);
+assert.equal(heightTree.height(18), 0);
+
+// Non-existing value
+assert.equal(heightTree.height(99), undefined);
+
+// Invalid inputs
+assert.equal(heightTree.height("10"), undefined);
+assert.equal(heightTree.height(NaN), undefined);
+assert.equal(heightTree.height(undefined), undefined);
+
+// Empty tree
+const emptyHeightTree = new Tree();
+assert.equal(emptyHeightTree.height(10), undefined);
+
+console.log("All height() tests passed!");
+
 console.log("\nAll tests passed!");
