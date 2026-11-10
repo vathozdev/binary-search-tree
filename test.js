@@ -215,4 +215,25 @@ assert.equal(emptyDepthTree.depth(10), undefined);
 
 console.log("All depth() tests passed!");
 
+// Empty tree
+const emptyBalanceTree = new Tree();
+assert.equal(emptyBalanceTree.isBalanced(), true);
+
+// Single-node tree
+const singleNodeBalanceTree = new Tree();
+singleNodeBalanceTree.buildTree([42]);
+assert.equal(singleNodeBalanceTree.isBalanced(), true);
+
+// Balanced tree
+const balancedTree = new Tree();
+balancedTree.buildTree([1, 2, 3, 4, 5, 6, 7]);
+assert.equal(balancedTree.isBalanced(), true);
+
+// Unbalanced tree
+const unbalancedTree = new Tree();
+[1, 2, 3, 4, 5].forEach((value) => unbalancedTree.insert(value));
+assert.equal(unbalancedTree.isBalanced(), false);
+
+console.log("All isBalanced() tests passed!");
+
 console.log("\nAll tests passed!");
