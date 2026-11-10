@@ -239,6 +239,33 @@ class Tree {
 
     return;
   }
+
+  isBalanced() {
+    function measure(current) {
+      if (current === null) {
+        return -1;
+      }
+
+      return 1 + Math.max(measure(current.left), measure(current.right));
+    }
+
+    function checkBalance(current) {
+      if (current === null) {
+        return true;
+      }
+
+      const leftHeight = measure(current.left);
+      const rightHeight = measure(current.right);
+
+      if (Math.abs(leftHeight - rightHeight) > 1) {
+        return false;
+      }
+
+      return checkBalance(current.left) && checkBalance(current.right);
+    }
+
+    return checkBalance(this.root);
+  }
 }
 
 export { Tree, Node };
