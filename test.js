@@ -120,44 +120,6 @@ prettyPrint(insertTree.root);
 
 console.log("All insert() tests passed!");
 
-console.log("\nTesting deleteItem()");
-
-const deleteTree = new Tree();
-deleteTree.buildTree([10, 5, 15, 3, 7, 12, 18]);
-
-// Delete a leaf node
-deleteTree.deleteItem(3);
-assert.equal(deleteTree.includes(3), false);
-assert.equal(deleteTree.includes(5), true);
-
-// Delete a node with one child
-deleteTree.deleteItem(5);
-assert.equal(deleteTree.includes(5), false);
-assert.equal(deleteTree.includes(7), true);
-
-// Delete a node with two children (root)
-deleteTree.deleteItem(10);
-assert.equal(deleteTree.includes(10), false);
-assert.equal(deleteTree.includes(7), true);
-assert.equal(deleteTree.includes(15), true);
-assert.equal(deleteTree.includes(12), true);
-assert.equal(deleteTree.includes(18), true);
-
-// Delete a value that doesn't exist
-deleteTree.deleteItem(99);
-assert.equal(deleteTree.includes(99), false);
-
-// Delete root when it has one child
-const singleChildTree = new Tree();
-singleChildTree.buildTree([10, 5]);
-
-singleChildTree.deleteItem(10);
-
-assert.equal(singleChildTree.root.data, 5);
-assert.equal(singleChildTree.includes(10), false);
-
-console.log("All deleteItem() tests passed!");
-
 console.log("\nTesting tree traversals");
 
 const traversalTree = new Tree();

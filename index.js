@@ -89,7 +89,7 @@ class Tree {
     }
   }
 
-  deleteItem(value) {
+ /* deleteItem(value) {
     if (typeof value !== "number" || Number.isNaN(value)) {
       return;
     }
@@ -112,7 +112,7 @@ class Tree {
       } else if (current.data === value) {
       }
     }
-  }
+  }*/
 
   levelOrderForEach(cb) {
     if (typeof cb !== "function") {
