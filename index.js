@@ -89,7 +89,7 @@ class Tree {
     }
   }
 
- /* deleteItem(value) {
+  /* deleteItem(value) {
     if (typeof value !== "number" || Number.isNaN(value)) {
       return;
     }
@@ -211,6 +211,29 @@ class Tree {
         current = current.right;
       } else {
         return measure(current);
+      }
+    }
+
+    return;
+  }
+
+  depth(value) {
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      return;
+    }
+
+    let depthCounter = 0;
+    let current = this.root;
+
+    while (current !== null) {
+      if (current.data > value) {
+        current = current.left;
+        depthCounter++;
+      } else if (current.data < value) {
+        current = current.right;
+        depthCounter++;
+      } else {
+        return depthCounter;
       }
     }
 
