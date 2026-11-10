@@ -183,4 +183,36 @@ assert.equal(emptyHeightTree.height(10), undefined);
 
 console.log("All height() tests passed!");
 
+console.log("\nTesting depth()");
+
+const depthTree = new Tree();
+depthTree.buildTree([10, 5, 15, 3, 7, 12, 18]);
+
+// Root
+assert.equal(depthTree.depth(10), 0);
+
+// Internal nodes
+assert.equal(depthTree.depth(5), 1);
+assert.equal(depthTree.depth(15), 1);
+
+// Leaf nodes
+assert.equal(depthTree.depth(3), 2);
+assert.equal(depthTree.depth(7), 2);
+assert.equal(depthTree.depth(12), 2);
+assert.equal(depthTree.depth(18), 2);
+
+// Non-existing value
+assert.equal(depthTree.depth(99), undefined);
+
+// Invalid inputs
+assert.equal(depthTree.depth("10"), undefined);
+assert.equal(depthTree.depth(NaN), undefined);
+assert.equal(depthTree.depth(undefined), undefined);
+
+// Empty tree
+const emptyDepthTree = new Tree();
+assert.equal(emptyDepthTree.depth(10), undefined);
+
+console.log("All depth() tests passed!");
+
 console.log("\nAll tests passed!");
