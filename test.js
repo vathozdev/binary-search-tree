@@ -158,4 +158,35 @@ assert.equal(singleChildTree.includes(10), false);
 
 console.log("All deleteItem() tests passed!");
 
+console.log("\nTesting tree traversals");
+
+const traversalTree = new Tree();
+traversalTree.buildTree([10, 5, 15, 3, 7, 12, 18]);
+
+// Level Order
+const levelOrder = [];
+traversalTree.levelOrderForEach((value) => levelOrder.push(value));
+
+assert.deepEqual(levelOrder, [10, 5, 15, 3, 7, 12, 18]);
+
+// In Order
+const inOrder = [];
+traversalTree.inOrderForEach((value) => inOrder.push(value));
+
+assert.deepEqual(inOrder, [3, 5, 7, 10, 12, 15, 18]);
+
+// Pre Order
+const preOrder = [];
+traversalTree.preOrderForEach((value) => preOrder.push(value));
+
+assert.deepEqual(preOrder, [10, 5, 3, 7, 15, 12, 18]);
+
+// Post Order
+const postOrder = [];
+traversalTree.postOrderForEach((value) => postOrder.push(value));
+
+assert.deepEqual(postOrder, [3, 7, 5, 12, 18, 15, 10]);
+
+console.log("All traversal tests passed!");
+
 console.log("\nAll tests passed!");
