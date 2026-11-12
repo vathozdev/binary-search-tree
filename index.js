@@ -89,30 +89,63 @@ class Tree {
     }
   }
 
-  /* deleteItem(value) {
-    if (typeof value !== "number" || Number.isNaN(value)) {
+  deleteItem(value) {
+    if (this.root === null) {
       return;
     }
-
     let current = this.root;
+    let parent = null;
+
+    while (current !== null && current.data !== value) {
+      parent = current;
+
+      if (value < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
 
     if (current === null) {
       return;
     }
 
-    let parent = current;
+    if (current.left === null && current.right === null) {
+      if (current === this.root) {
+        this.root = null;
+      } else if (parent.left === current) {
+        parent.left = null;
+      } else {
+        parent.right = null;
+      }
+    } else if (current.left === null || current.right === null) {
+      const child = current.left !== null ? current.left : current.right;
 
-    while (current !== null) {
-      if (current.data > value) {
-        parent = current;
-        current = current.left;
-      } else if (current.data < value) {
-        parent = current;
-        current = current.right;
-      } else if (current.data === value) {
+      if (current === this.root) {
+        this.root = child;
+      } else if (parent.left === current) {
+        parent.left = child;
+      } else {
+        parent.right = child;
+      }
+    } else {
+      let successorParent = current;
+      let successor = current.right;
+
+      while (successor.left !== null) {
+        successorParent = successor;
+        successor = successor.left;
+      }
+
+      current.data = successor.data;
+
+      if (successorParent === current) {
+        successorParent.right = successor.right;
+      } else {
+        successorParent.left = successor.right;
       }
     }
-  }*/
+  }
 
   levelOrderForEach(cb) {
     if (typeof cb !== "function") {
